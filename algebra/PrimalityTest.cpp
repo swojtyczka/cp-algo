@@ -1,4 +1,4 @@
-bool is_prime(int n)
+bool isPrime(int n)
 {
     if (n < 2)
         return false;
