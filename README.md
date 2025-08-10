@@ -22,7 +22,7 @@ This is a subset of competitive programming algorithms that I used in contests a
   - Interval update - point query ✅
   - Interval update - interval query ✅
 - Block decomposition ✅
-- Union-find
+- Union-find ✅
 
 ### Graphs
 
