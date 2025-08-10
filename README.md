@@ -17,9 +17,10 @@ This is a subset of competitive programming algorithms that I used in contests a
 
 ### Data structures
 
-- Segment trees
-  - Point - interval
-  - Interval - point
+- Segment trees ✅
+  - Point update - interval query ✅
+  - Interval update - point query ✅
+  - Interval update - interval query ✅
 - Sqrt decomposition
 - Union-find
 

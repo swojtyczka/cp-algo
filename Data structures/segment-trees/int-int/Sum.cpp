@@ -4,12 +4,12 @@
 
 class SegmentTree
 {
-public:
+  public:
 	SegmentTree(const std::vector<int> &vec) : size(vec.size())
 	{
 		tree.resize(4 * size);
 		lazy.resize(4 * size);
-		tree_build(vec, 1, 0, size - 1);
+		build_tree(vec, 1, 0, size - 1);
 	}
 
 	void update(int l, int r, int val)
@@ -22,7 +22,7 @@ public:
 		return tree_query(1, 0, size - 1, l, r);
 	}
 
-private:
+  private:
 	void push(int v, int tl, int tr)
 	{
 		int tm = (tl + tr) / 2;
@@ -75,15 +75,15 @@ private:
 		}
 	}
 
-	void tree_build(const std::vector<int> &vec, int v, int tl, int tr)
+	void build_tree(const std::vector<int> &vec, int v, int tl, int tr)
 	{
 		if (tl == tr)
 			tree[v] = vec[tl];
 		else
 		{
 			int tm = (tl + tr) / 2;
-			tree_build(vec, v * 2, tl, tm);
-			tree_build(vec, v * 2 + 1, tm + 1, tr);
+			build_tree(vec, v * 2, tl, tm);
+			build_tree(vec, v * 2 + 1, tm + 1, tr);
 			tree[v] = tree[v * 2] + tree[v * 2 + 1];
 		}
 	}

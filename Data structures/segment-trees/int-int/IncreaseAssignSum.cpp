@@ -1,10 +1,10 @@
-// update intervals (add number to every element in interval or assign a new value to all elements in interval), query intervals (sum)
-// v, tl i tr are the current node (subtree) and the current interval
+// update intervals (add number to every element in interval or assign a new value to all elements in interval), query
+// intervals (sum) v, tl i tr are the current node (subtree) and the current interval
 #include <vector>
 
 class SegmentTree
 {
-public:
+  public:
 	SegmentTree(const std::vector<long long> &vec) : size(vec.size())
 	{
 		tree.resize(4 * size);
@@ -29,7 +29,7 @@ public:
 		return tree_sum(1, 0, size - 1, l, r);
 	}
 
-private:
+  private:
 	void push(int v, int tl, int tr)
 	{
 		int l = v * 2;
