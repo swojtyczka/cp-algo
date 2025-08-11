@@ -25,6 +25,12 @@ This is a subset of competitive programming algorithms that I used in contests a
 - Union-find ✅
 - Sparse table ✅
 
+### Sorting algorithms
+
+- Quicksort ✅
+- Mergesort ✅
+- Heapsort ✅
+
 ### Graphs
 
 - BFS
@@ -44,3 +50,5 @@ This is a subset of competitive programming algorithms that I used in contests a
 ### Misc
 
 - MO's algorithm
+- Horner's algorithm
+- RPN calculator
