@@ -52,3 +52,7 @@ This is a subset of competitive programming algorithms that I used in contests a
 - MO's algorithm
 - Horner's algorithm
 - RPN calculator
+
+### Strings
+
+- KMP algorithm
