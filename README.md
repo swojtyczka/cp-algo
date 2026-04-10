@@ -1,8 +1,8 @@
 # Competitive programming algorithms
 
-This is a subset of competitive programming algorithms that I used in contests and for teaching.
+This is a collection of my competitive programming algorithms that I have used in contests and teaching materials.
 
-***Some of these algorithms were originally written back when I was just starting to learn DSA, so they may not meet current standards. I'm actively reviewing and refining each one. Finished algorithms are marked with ✅***
+***I wrote some of these algorithms in high school, so they may not reflect best practices. I'm actively reviewing and refining each one. Updated algorithms are marked with ✅***
 
 ## Algorithms
 
@@ -41,18 +41,29 @@ This is a subset of competitive programming algorithms that I used in contests a
 - MST (minimal spanning tree):
   - Kruskall's algorithm
   - Prim's algorithm
-- Kahn's algorithm
-- LCA
+- Topological sort:
+  - DFS ✅
+  - Kahn's algorithm
+- LCA (lowest common ancestor):
   - Binary lifting
   - k'th ancestor
   - Distance between nodes in tree
+- Kosaraju Algorithm
+
+### Geometry
+
+- 2D cross product
+- Area of a triangle
+- Area of a polygon
+- Convex Hull
+
+### Strings and hashing
+
+- KMP algorithm
+- Karp-Rabin algorithm
 
 ### Misc
 
 - MO's algorithm
 - Horner's algorithm
 - RPN calculator
-
-### Strings
-
-- KMP algorithm

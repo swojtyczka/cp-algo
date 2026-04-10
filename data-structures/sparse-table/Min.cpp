@@ -23,7 +23,7 @@ class SparseTable
 		if (a == b)
 			return sparseTable[a][0];
 
-		const int log2Length = std::log2(b - a + 1);
+		const int log2Length = std::floor(std::log2(b - a + 1));
 
 		return std::min(sparseTable[a][log2Length], sparseTable[b - (1 << log2Length) + 1][log2Length]);
 	}

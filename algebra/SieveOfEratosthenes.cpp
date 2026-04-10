@@ -29,7 +29,7 @@ std::vector<int> sieveWithSmallestPrimeDivisor(int size)
 	return smallestPrimeDivisor;
 }
 
-std::vector<int> prime_factorize(int x, const std::vector<int> &smallestPrimeDivisor)
+std::vector<int> factorize(int x, const std::vector<int> &smallestPrimeDivisor)
 {
 	std::vector<int> result;
 

@@ -1,16 +1,13 @@
-#include <iostream>
-#include <algorithm>
-using namespace std;
-
-int tab[1000000 + 7];
+// search for a specific value in a sorted [l,r) range
+#include <vector>
 
 // first value bigger or equal than
-int lower_bound(int *T, int l, int r, int x)
+int lowerBound(const std::vector<int> &vec, int l, int r, int x)
 {
 	while (l < r)
 	{
 		int s = (l + r) / 2;
-		if (x > T[s])
+		if (x > vec[s])
 			l = s + 1;
 		else
 			r = s;
@@ -19,32 +16,15 @@ int lower_bound(int *T, int l, int r, int x)
 }
 
 // first value bigger than
-int upper_bound(int *T, int l, int r, int x)
+int upperBound(const std::vector<int> &vec, int l, int r, int x)
 {
 	while (l < r)
 	{
 		int s = (l + r) / 2;
-		if (x >= T[s])
+		if (x >= vec[s])
 			l = s + 1;
 		else
 			r = s;
 	}
 	return l;
-}
-
-int main()
-{
-	int n, q;
-	cin >> n;
-
-	for (int i = 0; i < n; i++)
-		cin >> tab[i];
-
-	cin >> q;
-
-	sort(tab, tab + n);
-
-	cout << lower_bound(tab, 0, n - 1, q) << '\n';
-
-	return 0;
 }

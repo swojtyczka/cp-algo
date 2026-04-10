@@ -1,24 +1,24 @@
 #include <vector>
 
-class SegmentDecomposititon
+class BlockDecomposition
 {
   public:
-	SegmentDecomposititon(const std::vector<int> &vec, int blockLength) : data(vec), blockLength_(blockLength)
+	BlockDecomposition(const std::vector<int> &vec, int blockLength) : data(vec), blockLength(blockLength)
 	{
 		blocks.resize(vec.size() / blockLength);
 		for (int i = 0; i < vec.size(); i++)
 			blocks[blockNumber(i)] += vec[i];
 	}
 
-	long long query(int l, int r)
+	int query(int l, int r)
 	{
-		long long res = 0;
+		int res = 0;
 		while (l <= r)
 		{
-			if (l % blockLength_ == 0 and l + blockLength_ - 1 <= r)
+			if (l % blockLength == 0 and l + blockLength - 1 <= r)
 			{
 				res += blocks[blockNumber(l)];
-				l += blockLength_;
+				l += blockLength;
 			}
 			else
 				res += data[l++];
@@ -34,12 +34,12 @@ class SegmentDecomposititon
 	}
 
   private:
-	constexpr int blockNumber(int pos)
+	constexpr int blockNumber(int pos) const
 	{
-		return pos / blockLength_;
+		return pos / blockLength;
 	}
 
-	const int blockLength_;
+	int blockLength;
 	std::vector<int> data;
 	std::vector<int> blocks;
 };
