@@ -62,12 +62,11 @@ class SegmentTree
 		if (tl > r || tr < l)
 			return;
 
-		else if (l <= tl && tr <= r)
+		if (l <= tl && tr <= r)
 		{
 			tree[v] += (tr - tl + 1) * val;
 			lazy_inc[v] += val;
 		}
-
 		else
 		{
 			int tm = (tl + tr) / 2;
@@ -86,14 +85,13 @@ class SegmentTree
 		if (tl > r || tr < l)
 			return;
 
-		else if (l <= tl && tr <= r)
+		if (l <= tl && tr <= r)
 		{
 			tree[v] = (tr - tl + 1) * val;
 			lazy_set_val[v] = val;
 			lazy_set[v] = true;
 			lazy_inc[v] = 0;
 		}
-
 		else
 		{
 			int tm = (tl + tr) / 2;
@@ -112,17 +110,14 @@ class SegmentTree
 		if (r < tl || l > tr)
 			return 0;
 
-		else if (l <= tl && tr <= r)
+		if (l <= tl && tr <= r)
 			return tree[v];
 
-		else
-		{
-			int tm = (tl + tr) / 2;
+		int tm = (tl + tr) / 2;
 
-			push(v, tl, tr);
+		push(v, tl, tr);
 
-			return tree_sum(v * 2, tl, tm, l, r) + tree_sum(v * 2 + 1, tm + 1, tr, l, r);
-		}
+		return tree_sum(v * 2, tl, tm, l, r) + tree_sum(v * 2 + 1, tm + 1, tr, l, r);
 	}
 
 	void tree_build(const std::vector<long long> &vec, int v, int tl, int tr)
@@ -139,8 +134,8 @@ class SegmentTree
 	}
 
 	int size;
-	std::vector<long long> tree{};
-	std::vector<long long> lazy_inc{};
-	std::vector<bool> lazy_set{};
-	std::vector<long long> lazy_set_val{};
+	std::vector<long long> tree;
+	std::vector<long long> lazy_inc;
+	std::vector<bool> lazy_set;
+	std::vector<long long> lazy_set_val;
 };

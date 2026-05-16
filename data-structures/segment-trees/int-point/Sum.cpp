@@ -1,6 +1,5 @@
 // v, tl i tr are the current node (subtree) and the current interval
 // in this case, we use the segment tree to compute sum
-#include <algorithm>
 #include <vector>
 
 class SegmentTree
@@ -38,10 +37,11 @@ class SegmentTree
 
 	void update_tree(int v, int tl, int tr, int l, int r, int val)
 	{
-		if (l > r)
+
+		if (r < tl || tr < l)
 			return;
 
-		if (l == tl && r == tr)
+		if (l <= tl && tr <= r)
 		{
 			tree[v] += val;
 			return;
@@ -49,8 +49,8 @@ class SegmentTree
 
 		int tm = (tl + tr) / 2;
 
-		update_tree(v * 2, tl, tm, l, std::min(r, tm), val);
-		update_tree(v * 2 + 1, tm + 1, tr, std::max(l, tm + 1), r, val);
+		update_tree(v * 2, tl, tm, l, r, val);
+		update_tree(v * 2 + 1, tm + 1, tr, l, r, val);
 	}
 
 	void build_tree(const std::vector<int> &vec, int v, int tl, int tr)

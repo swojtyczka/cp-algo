@@ -44,16 +44,14 @@ template <typename T> class SegmentTree
 
 	T query_tree(int v, int tl, int tr, int l, int r)
 	{
-		if (l > r)
+		if (r < tl || tr < l)
 			return 0;
 
-		if (l == tl && r == tr)
+		if (l <= tl && tr <= r)
 			return tree[v];
 
 		int tm = (tl + tr) / 2;
-		return combine(
-			query_tree(v * 2, tl, tm, l, std::min(r, tm)),
-			query_tree(v * 2 + 1, tm + 1, tr, std::max(l, tm + 1), r));
+		return combine(query_tree(v * 2, tl, tm, l, r), query_tree(v * 2 + 1, tm + 1, tr, l, r));
 	}
 
 	void build_tree(const std::vector<T> &vec, int v, int tl, int tr)
@@ -71,12 +69,5 @@ template <typename T> class SegmentTree
 
 	std::function<T(T, T)> combine;
 	int size;
-	std::vector<T> tree{};
+	std::vector<T> tree;
 };
-
-// int main()
-// {
-// 	SegmentTree<int> s(100, [](int a, int b) { return a + b; });
-// 	SegmentTree<int> s2(100, [](int a, int b) { return std::max(a, b); });
-// 	SegmentTree<int> s3(100, [](int a, int b) { return a * a + b * b; });
-// }

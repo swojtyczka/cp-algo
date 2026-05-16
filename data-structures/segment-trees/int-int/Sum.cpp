@@ -38,12 +38,11 @@ class SegmentTree
 		if (tl > r || tr < l)
 			return;
 
-		else if (l <= tl && tr <= r)
+		if (l <= tl && tr <= r)
 		{
 			tree[v] += (tr - tl + 1) * val;
 			lazy[v] += val;
 		}
-
 		else
 		{
 			int tm = (tl + tr) / 2;
@@ -62,17 +61,14 @@ class SegmentTree
 		if (r < tl || l > tr)
 			return 0;
 
-		else if (l <= tl && tr <= r)
+		if (l <= tl && tr <= r)
 			return tree[v];
 
-		else
-		{
-			int tm = (tl + tr) / 2;
+		int tm = (tl + tr) / 2;
 
-			push(v, tl, tr);
+		push(v, tl, tr);
 
-			return tree_query(v * 2, tl, tm, l, r) + tree_query(v * 2 + 1, tm + 1, tr, l, r);
-		}
+		return tree_query(v * 2, tl, tm, l, r) + tree_query(v * 2 + 1, tm + 1, tr, l, r);
 	}
 
 	void build_tree(const std::vector<int> &vec, int v, int tl, int tr)
@@ -89,6 +85,6 @@ class SegmentTree
 	}
 
 	int size;
-	std::vector<int> tree{};
-	std::vector<int> lazy{};
+	std::vector<int> tree;
+	std::vector<int> lazy;
 };
