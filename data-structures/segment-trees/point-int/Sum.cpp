@@ -1,6 +1,5 @@
 // v, tl i tr are the current node (subtree) and the current interval
 // in this case, we use the segment tree to compute sum
-#include <algorithm>
 #include <vector>
 
 class SegmentTree
@@ -40,15 +39,14 @@ class SegmentTree
 
 	int query_tree(int v, int tl, int tr, int l, int r)
 	{
-		if (l > r)
+		if (r < tl || tr < l)
 			return 0;
 
-		if (l == tl && r == tr)
+		if (l <= tl && tr <= r)
 			return tree[v];
 
 		int tm = (tl + tr) / 2;
-		return query_tree(v * 2, tl, tm, l, std::min(r, tm)) +
-			   query_tree(v * 2 + 1, tm + 1, tr, std::max(l, tm + 1), r);
+		return query_tree(v * 2, tl, tm, l, r) + query_tree(v * 2 + 1, tm + 1, tr, l, r);
 	}
 
 	void build_tree(const std::vector<int> &vec, int v, int tl, int tr)
@@ -65,5 +63,5 @@ class SegmentTree
 	}
 
 	int size;
-	std::vector<int> tree{};
+	std::vector<int> tree;
 };

@@ -27,14 +27,13 @@ class SegmentTree
 	{
 		if (tl == tr)
 			return tree[v];
-		else
-		{
-			int tm = (tl + tr) / 2;
-			if (pos <= tm)
-				return tree[v] + query_tree(v * 2, tl, tm, pos);
-			else
-				return tree[v] + query_tree(v * 2 + 1, tm + 1, tr, pos);
-		}
+
+		int tm = (tl + tr) / 2;
+
+		if (pos <= tm)
+			return tree[v] + query_tree(v * 2, tl, tm, pos);
+
+		return tree[v] + query_tree(v * 2 + 1, tm + 1, tr, pos);
 	}
 
 	void update_tree(int v, int tl, int tr, int l, int r, int val)
@@ -63,10 +62,10 @@ class SegmentTree
 			int tm = (tl + tr) / 2;
 			build_tree(vec, v * 2, tl, tm);
 			build_tree(vec, v * 2 + 1, tm + 1, tr);
-			tree[v] = tree[v * 2] + tree[v * 2 + 1];
+			tree[v] = 0;
 		}
 	}
 
 	int size;
-	std::vector<int> tree{};
+	std::vector<int> tree;
 };

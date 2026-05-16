@@ -1,10 +1,11 @@
 // v, tl i tr are the current node (subtree) and the current interval
 #include <functional>
+#include <utility>
 
 template <typename T> class SegmentTree
 {
   public:
-	SegmentTree(int n, std::function<T(T, T)> cmb) : combine(cmb), size(n)
+	SegmentTree(int n, std::function<T(T, T)> cmb) : combine(std::move(cmb)), size(n)
 	{
 		tree.resize(4 * size);
 	}
@@ -50,8 +51,9 @@ template <typename T> class SegmentTree
 			return tree[v];
 
 		int tm = (tl + tr) / 2;
-		return combine(query_tree(v * 2, tl, tm, l, std::min(r, tm)),
-					   query_tree(v * 2 + 1, tm + 1, tr, std::max(l, tm + 1), r));
+		return combine(
+			query_tree(v * 2, tl, tm, l, std::min(r, tm)),
+			query_tree(v * 2 + 1, tm + 1, tr, std::max(l, tm + 1), r));
 	}
 
 	void build_tree(const std::vector<T> &vec, int v, int tl, int tr)
@@ -71,3 +73,10 @@ template <typename T> class SegmentTree
 	int size;
 	std::vector<T> tree{};
 };
+
+// int main()
+// {
+// 	SegmentTree<int> s(100, [](int a, int b) { return a + b; });
+// 	SegmentTree<int> s2(100, [](int a, int b) { return std::max(a, b); });
+// 	SegmentTree<int> s3(100, [](int a, int b) { return a * a + b * b; });
+// }
